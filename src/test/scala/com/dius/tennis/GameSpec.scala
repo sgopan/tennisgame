@@ -382,6 +382,38 @@ class GameSpec extends org.scalatest.fixture.FunSpec with GivenWhenThen {
       assert("player2 wins".equals(game.score()))
     }
 
+    it("should allow to player1 to win Game with straight 1 point") { game =>
+
+      Given("score is 40-30")
+      game.pointWonBy("player1")
+      game.pointWonBy("player1")
+      game.pointWonBy("player1")
+      game.pointWonBy("player2")
+      game.pointWonBy("player2")
+
+      When("player1 wins a 1point")
+      game.pointWonBy("player1")      
+
+      Then("score should be player1 wins")
+      assert("player1 wins".equals(game.score()))
+    }
+
+    it("should allow to player2 to win Game with straight 1 point") { game =>
+
+      Given("score is 30-40")
+      game.pointWonBy("player1")
+      game.pointWonBy("player1")
+      game.pointWonBy("player2")
+      game.pointWonBy("player2")
+      game.pointWonBy("player2")
+
+      When("player2 wins a 2 point")
+      game.pointWonBy("player2")      
+
+      Then("score should be player2 wins")
+      assert("player2 wins".equals(game.score()))
+    }
+
 
   }
 
