@@ -1,8 +1,8 @@
 package com.dius.tennis
 
 import com.dius.tennis.Game.{Advantage, Deuce, Player, Score}
-import org.scalatest.{FunSpec, GivenWhenThen, Inside, Matchers}
 
+import org.scalatest.{FunSpec, GivenWhenThen, Inside, Matchers}
 
 /**
   * Created by sgopan on 22/01/17.

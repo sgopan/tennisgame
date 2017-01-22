@@ -4,7 +4,6 @@ import com.dius.tennis.Game.{Advantage, Deuce, Player}
 
 import org.scalatest.{FunSpec, GivenWhenThen}
 
-
 /**
   * Created by sgopan on 21/01/17.
   */
@@ -117,7 +116,7 @@ class PlayerSpec extends FunSpec with GivenWhenThen {
 
       And("player.status should be Some(Advantage)")
       assert(player.status.contains(Advantage))
-
+      
     }
 
   }

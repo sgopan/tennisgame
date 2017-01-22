@@ -24,7 +24,7 @@ class GameSpec extends org.scalatest.fixture.FunSpec with GivenWhenThen {
     it("should allow player1 to gain  15 points") { game =>
 
       Given("score is 0-0")
-
+      
       When("player1 wins a point")
       game.pointWonBy("player1")
 
@@ -293,7 +293,6 @@ class GameSpec extends org.scalatest.fixture.FunSpec with GivenWhenThen {
 
       Given("score is 0-0")
 
-
       When("player1 wins a 4 points")
       game.pointWonBy("player1")
       game.pointWonBy("player1")
@@ -329,7 +328,6 @@ class GameSpec extends org.scalatest.fixture.FunSpec with GivenWhenThen {
       game.pointWonBy("player1")
       game.pointWonBy("player1")
 
-
       Then("score should be player1 wins")
       assert("player1 wins".equals(game.score()))
     }
@@ -344,7 +342,6 @@ class GameSpec extends org.scalatest.fixture.FunSpec with GivenWhenThen {
       game.pointWonBy("player2")
       game.pointWonBy("player2")
       game.pointWonBy("player2")
-
 
       Then("score should be player2 wins")
       assert("player2 wins".equals(game.score()))
@@ -413,7 +410,6 @@ class GameSpec extends org.scalatest.fixture.FunSpec with GivenWhenThen {
       Then("score should be player2 wins")
       assert("player2 wins".equals(game.score()))
     }
-
 
   }
 
