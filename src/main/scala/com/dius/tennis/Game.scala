@@ -14,6 +14,12 @@ object Game {
   //Common trait for Deuce and Advantage
   sealed trait Status
 
+  //Represents Advantage status in a game
+  case object Advantage extends Status
+
+  //Represents Deuce status in a game
+  case object Deuce extends Status
+
   /**
     * Represents a Player in a game.    *
     * @param name   - The name of the player
@@ -28,13 +34,7 @@ object Game {
     * @param player2 - - The second player  object
     */
   case class Score(player1: Player, player2: Player)
-
-  //Represents Advantage status in a game
-  case object Advantage extends Status
-
-  //Represents Deuce status in a game
-  case object Deuce extends Status
-
+  
 }
 
 /**
