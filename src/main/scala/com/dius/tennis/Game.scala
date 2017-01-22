@@ -41,10 +41,9 @@ object Game {
   * This class represents a game in a tennis. The rules of the game are described below
   * A game is won by the first player to have won at least four points in total and at least two points more than the opponent.
   * The running score of each game is described in a manner peculiar to tennis: scores from zero to three points are described
-  * as 0, 15, 30, 40, respectively.
-  * If at least three points have been scored by each player, and the scores are equal, the score is "deuce".
-  * If at least three points have been scored by each side and a player has one more point than his opponent, the score of the 
-  * game is "advantage" for the player in the lead.
+  * as 0, 15, 30, 40, respectively. If at least three points have been scored by each player, and the scores are equal, 
+  * the score is "deuce". If at least three points have been scored by each side and a player has one more point than his 
+  * opponent, the score of the game is "advantage" for the player in the lead.
   *
   * @param player1 - The name of the first player
   * @param player2 - The name of the second player
@@ -62,7 +61,7 @@ class Game(player1: String, player2: String) {
 
 
   /**
-    * This method will update the current score    *
+    * This method will update a point for the player 
     * @param player - The name of the player who won the point
     */
   def pointWonBy(player: String): Unit = {
@@ -78,7 +77,7 @@ class Game(player1: String, player2: String) {
   }
 
   /**
-    * This method capture a single game scenarios for first player and updates the score
+    * This method capture game scenarios for first player and updates the score
     */
   private def updateScoreFor1stPlayer(): Unit = {
 
@@ -107,17 +106,18 @@ class Game(player1: String, player2: String) {
 
       // If current point is 30 increment by 10
       case Score(Player(_, 30, None), _) => this.gameScore.player1.point += INCREMENT_BY_TEN 
+
       // If current point is 40 increment by 20
       case Score(Player(_, 40, None), _) => this.gameScore.player1.point += INCREMENT_BY_TWENTY 
+
       //Any Other case simply increment the point
       case _ => this.gameScore.player1.point += INCREMENT_BY_FIFTEEN 
-
 
     }
   }
 
   /**
-    * This method captures a single game scenarios for second player and and updates the score
+    * This method captures game scenarios for second player and and updates the score
     */
   private def updateScoreFor2ndPlayer(): Unit = {
 
@@ -146,8 +146,10 @@ class Game(player1: String, player2: String) {
 
       //If current point is 30 increment by 10
       case Score(_, Player(_, 30, None)) => this.gameScore.player2.point += INCREMENT_BY_TEN 
+
       // If current point is 40 increment by 20
       case Score(_, Player(_, 40, None)) => this.gameScore.player2.point += INCREMENT_BY_TWENTY 
+
       //Any Other case simply increment th point
       case _ => this.gameScore.player2.point = this.gameScore.player2.point + INCREMENT_BY_FIFTEEN 
 
@@ -162,20 +164,25 @@ class Game(player1: String, player2: String) {
 
     this.gameScore match {
 
+      //Score at Deuce
       case Score(Player(_, 40, Some(Deuce)), Player(_, 40, Some(Deuce))) => "Deuce"
 
+      //Player 1 Advantage
       case Score(Player(player, 40, Some(Advantage)), _) => "Advantage " + player
 
+      //Player 2 Advantage
       case Score(_, Player(player, 40, Some(Advantage))) => "Advantage " + player
 
+      //Player 1 wins
       case Score(Player(player, 60, None), _) => player + " wins"
 
+      //Player 2 wins
       case Score(_, Player(player, 60, None)) => player + " wins"
 
+      //All other cases, return the points separated by -
       case Score(Player(_, point1, _), Player(_, point2, _)) => point1 + "-" + point2
     }
 
   }
-
 
 }

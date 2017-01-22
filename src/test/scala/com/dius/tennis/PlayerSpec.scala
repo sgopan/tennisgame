@@ -1,6 +1,7 @@
 package com.dius.tennis
 
 import com.dius.tennis.Game.{Advantage, Deuce, Player}
+
 import org.scalatest.{FunSpec, GivenWhenThen}
 
 
@@ -28,7 +29,7 @@ class PlayerSpec extends FunSpec with GivenWhenThen {
     }
 
     it("should create a player with name and point") {
-
+      
       Given("A player name \"player1\" and point 15")
       val player = Player("player1", 15)
 
@@ -118,7 +119,6 @@ class PlayerSpec extends FunSpec with GivenWhenThen {
       assert(player.status.contains(Advantage))
 
     }
-
 
   }
 

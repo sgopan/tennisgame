@@ -193,7 +193,6 @@ class ScoreSpec extends FunSpec with GivenWhenThen with Inside with Matchers {
 
     }
 
-
   }
 
 }
